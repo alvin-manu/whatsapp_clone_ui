@@ -91,8 +91,7 @@
   width: 8px;
   height: 8px;
 }
-
-.nav-item svg {
+svg {
   width: 24px;
   height: 24px;
   fill: var(--text-secondary);
@@ -101,3 +100,105 @@
   fill: var(--text-primary);
 }
 
+
+.chatList{
+  width: 30%;
+  border-right: 1px solid #d1d7db;
+}
+
+.sidebar-header {
+    background-color: var(--bg-primary);
+    padding: 15px 16px 10px 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.header-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.brand-name {
+    color: #1daa61; 
+    font-size: 22px;
+    font-weight: 700;
+}
+
+.header-icons {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.btn-icon--circle-green {
+    background-color: #1daa61 !important;
+    border: none;
+    color: white !important;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.search-wrapper {
+    background-color: var(--bg-secondary);
+    border-radius: 40px;
+    display: flex;
+    align-items: center;
+    padding: 0 12px;
+    height: 35px;
+}
+
+.search-input {
+    background: transparent;
+    border: none;
+    padding: 8px;
+    width: 100%;
+    font-size: 14px;
+    outline: none;
+}
+
+.search-icon {
+    color: #667781;
+    font-size: 14px;
+}
+
+.filter-container {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    overflow-x: auto; 
+    padding-bottom: 5px;
+}
+
+.pill {
+    background-color: white;
+    border: 1px solid #d6d6d6;
+    border-radius: 16px;
+    padding: 6px 12px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #00000099;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: 0.2s;
+}
+
+.pill:hover {
+    background-color: var(--bg-secondary);
+}
+
+.pill.active {
+    background-color: #d9fdd3;
+    color: #15603E;
+    font-weight: bold;
+}
+
+.count {
+    font-size: 12px;
+    margin-left: 4px;
+}
