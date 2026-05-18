@@ -502,6 +502,11 @@ svg {
   flex-direction: column;
   border-left: 1px solid #d1d7db;
   padding: 0px 5px;
+  display: none;
+}
+
+.profileInfo.active {
+    display: flex; 
 }
 
 .info-scroll-body {
