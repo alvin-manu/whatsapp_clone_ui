@@ -72,12 +72,12 @@
   padding: 6px 8px;
   display: flex;
   align-items: center;
-  justify-content:center ;
+  justify-content: center;
   cursor: pointer;
 }
 
-.chat-window .icon-wrapper svg{
-  fill: black;
+.chat-window .icon-wrapper svg {
+  fill: var(--text-primary);
 }
 
 .icon-wrapper:hover {
@@ -379,7 +379,6 @@ svg {
   gap: 12px;
 }
 
-
 .message-feed {
   flex: 1;
   overflow-y: auto;
@@ -421,7 +420,7 @@ svg {
   color: var(--text-primary);
   flex-direction: column;
 }
-.msg-bubble .msg-text{
+.msg-bubble .msg-text {
   color: var(--text-primary);
 }
 
@@ -451,7 +450,6 @@ svg {
   font-size: 13px;
 }
 
-
 .log-content {
   display: flex;
   gap: 15px;
@@ -471,7 +469,7 @@ svg {
 
 .chat-footer {
   height: 62px;
-  margin:15px;
+  margin: 15px;
   background-color: var(--bg-primary);
   box-shadow: 0 4px 6px -6px #222;
   border-radius: 40px;
@@ -491,7 +489,71 @@ svg {
   color: var(--text-primary);
   outline: none;
 }
-.msg-meta svg{
+.msg-meta svg {
   width: 14px;
   height: 14px;
 }
+
+.profileInfo {
+  width: 30%;
+  height: 100vh;
+  background-color: var(--bg-primary);
+  display: flex;
+  flex-direction: column;
+  border-left: 1px solid #d1d7db;
+  padding: 0px 5px;
+}
+
+.info-scroll-body {
+  flex: 1;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.info-card {
+  background-color: var(--bg-primary);
+  padding: 20px 30px;
+  display: flex;
+  flex-direction: column;
+}
+
+.avatar--lg {
+  width: 128px;
+  height: 128px;
+  border: 1px solid #d1d7db;
+  cursor: pointer;
+}
+
+.profile-summary {
+  align-items: center;
+  text-align: center;
+  padding-bottom: 28px;
+}
+
+.display-name {
+  font-size: 24px;
+  font-weight: 400;
+  color: var(--text-primary);
+  margin-top: 14px;
+}
+
+.display-phone {
+  font-size: 16px;
+  color: var(--text-secondary);
+  margin-top: 20px;
+}
+.profile-summary .pill {
+  padding: 10px 50px;
+  margin-top: 15px;
+}
+
+.profile-summary .pill svg {
+  fill: #00a884;
+}
+.search-action-text{
+  font-weight: 500;
+  color: var(--text-primary);
+}
+
