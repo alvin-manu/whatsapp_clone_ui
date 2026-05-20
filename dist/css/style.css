@@ -29,6 +29,14 @@ svg {
   fill: var(--text-secondary);
 }
 
+.chat-row-list::-webkit-scrollbar, .message-feed::-webkit-scrollbar, .info-scroll-body::-webkit-scrollbar {
+  width: 6px;
+}
+.chat-row-list::-webkit-scrollbar-thumb, .message-feed::-webkit-scrollbar-thumb, .info-scroll-body::-webkit-scrollbar-thumb {
+  background-color: rgb(199, 196, 196);
+  border-radius: 4px;
+}
+
 .appContainer {
   display: flex;
   height: 100vh;
@@ -45,4 +53,23 @@ svg {
   align-items: center;
   padding: 12px 0;
   border-right: 1px solid #d1d7db;
+}
+
+.nav-item {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  margin-bottom: 6px;
+  cursor: pointer;
+  transition: background 0.2s ease;
+  position: relative;
+}
+.nav-item:hover, .nav-item.active {
+  background-color: var(--hover-primary);
+}
+.nav-item.active svg {
+  fill: var(--text-primary);
 }
