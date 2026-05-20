@@ -1,12 +1,17 @@
-@import 'variables';
-@import 'mixins';
-@import 'components';
+@import "variables";
+@import "mixins";
+@import "components";
 
 * {
   margin: 0px;
   padding: 0px;
   box-sizing: border-box;
-  font-family: Roboto Variable, Roboto, Helvetica Neue, Helvetica, sans-serif;
+  font-family:
+    Roboto Variable,
+    Roboto,
+    Helvetica Neue,
+    Helvetica,
+    sans-serif;
 }
 
 svg {
@@ -15,7 +20,9 @@ svg {
   fill: var(--text-secondary);
 }
 
-.chat-row-list, .message-feed, .info-scroll-body {
+.chat-row-list,
+.message-feed,
+.info-scroll-body {
   @include custom-scrollbar;
 }
 
@@ -47,7 +54,8 @@ svg {
   transition: background 0.2s ease;
   position: relative;
 
-  &:hover, &.active {
+  &:hover,
+  &.active {
     background-color: var(--hover-primary);
   }
 
@@ -72,12 +80,20 @@ svg {
   gap: 12px;
 }
 
-.header-top, .header-left, .header-right {
+.header-top,
+.header-left,
+.header-right {
   display: flex;
   align-items: center;
 }
-.header-top { justify-content: space-between; }
-.header-icons { display: flex; align-items: center; gap: 8px; }
+.header-top {
+  justify-content: space-between;
+}
+.header-icons {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
 
 .brand-name {
   color: $whatsapp-green;
@@ -101,7 +117,10 @@ svg {
     font-size: 14px;
     outline: none;
   }
-  .search-icon { color: #667781; font-size: 14px; }
+  .search-icon {
+    color: #667781;
+    font-size: 14px;
+  }
 }
 
 .filter-container {
@@ -110,8 +129,11 @@ svg {
   align-items: center;
   overflow-x: auto;
   padding-bottom: 5px;
-  
-  .count { font-size: 12px; margin-left: 4px; }
+
+  .count {
+    font-size: 12px;
+    margin-left: 4px;
+  }
 }
 
 .chat-row-list {
@@ -128,7 +150,8 @@ svg {
   margin: 5px 8px;
   transition: background 0.1s ease;
 
-  &.active, &:hover {
+  &.active,
+  &:hover {
     background-color: var(--hover-secondary);
     border-radius: 12px;
   }
@@ -153,12 +176,24 @@ svg {
   justify-content: space-between;
   align-items: baseline;
   margin-bottom: 4px;
-  
-  .chat-name { font-size: 17px; font-weight: 400; color: var(--text-primary); @include text-ellipsis; }
-  .chat-meta {
-    font-size: 12px; color: var(--text-secondary);
-    &.highlight { color: #25d366; }
+
+  .chat-name {
+    font-size: 17px;
+    font-weight: 400;
+    color: var(--text-primary);
+    @include text-ellipsis;
   }
+  .chat-meta {
+    font-size: 12px;
+    color: var(--text-secondary);
+    &.highlight {
+      color: #25d366;
+    }
+  }
+}
+
+.chatHeaderLeft .chat-name{
+  margin-left:10px;
 }
 
 .chat-footer-row {
@@ -173,12 +208,20 @@ svg {
   gap: 4px;
   flex: 1;
   min-width: 0;
-  
-  svg { width: 18px; height: 18px; }
-  .msg-text { font-size: 14px; color: var(--text-secondary); @include text-ellipsis; }
+
+  svg {
+    width: 18px;
+    height: 18px;
+  }
+  .msg-text {
+    font-size: 14px;
+    color: var(--text-secondary);
+    @include text-ellipsis;
+  }
 }
 
-.status-check, .status-seen svg {
+.status-check,
+.status-seen svg {
   fill: #53bdeb;
   font-size: 14px;
 }
@@ -189,8 +232,10 @@ svg {
   flex-direction: column;
   height: 100vh;
   background-color: var(--bg-secondary);
-  
-  .icon-wrapper svg { fill: var(--text-primary); }
+
+  .icon-wrapper svg {
+    fill: var(--text-primary);
+  }
 }
 
 .message-feed {
@@ -215,12 +260,20 @@ svg {
   display: flex;
   width: 100%;
   margin-bottom: 8px;
-  
-  &--received { justify-content: flex-start; 
-    .msg-bubble { background-color: var(--bg-primary); border-top-left-radius: 0; }
+
+  &--received {
+    justify-content: flex-start;
+    .msg-bubble {
+      background-color: var(--bg-primary);
+      border-top-left-radius: 0;
+    }
   }
-  &--sent { justify-content: flex-end; 
-    .msg-bubble { background-color: $whatsapp-light-green; border-top-right-radius: 0; }
+  &--sent {
+    justify-content: flex-end;
+    .msg-bubble {
+      background-color: $whatsapp-light-green;
+      border-top-right-radius: 0;
+    }
   }
 }
 
@@ -233,8 +286,10 @@ svg {
   display: flex;
   color: var(--text-primary);
   flex-direction: column;
-  
-  .msg-text { color: var(--text-primary); }
+
+  .msg-text {
+    color: var(--text-primary);
+  }
 }
 
 .msg-meta {
@@ -243,11 +298,17 @@ svg {
   justify-content: flex-end;
   gap: 4px;
   margin-top: 2px;
-  
-  svg { width: 14px; height: 14px; }
+
+  svg {
+    width: 14px;
+    height: 14px;
+  }
 }
 
-.msg-time { font-size: 11px; color: var(--text-secondary); }
+.msg-time {
+  font-size: 11px;
+  color: var(--text-secondary);
+}
 
 .log-content {
   display: flex;
@@ -285,4 +346,122 @@ svg {
   padding: 5px 5px;
   color: var(--text-primary);
   outline: none;
+}
+
+.profileInfo {
+  width: $sidebar-width;
+  height: 100vh;
+  background-color: var(--bg-primary);
+  display: flex;
+  flex-direction: column;
+  border-left: 1px solid #d1d7db;
+  padding: 0px 5px;
+  display: none;
+
+  &.active {
+    display: flex;
+  }
+}
+
+.info-scroll-body {
+  flex: 1;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.avatar--sm {
+  cursor: pointer;
+  width: 40px;
+  height: 40px;
+}
+.avatar--lg {
+  width: 128px;
+  height: 128px;
+  border: 1px solid #d1d7db;
+  cursor: pointer;
+}
+
+.profile-summary {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding-bottom: 28px;
+
+  .pill {
+    padding: 10px 50px;
+    margin-top: 15px;
+    svg {
+      fill: #00a884;
+    }
+  }
+}
+
+.display-name {
+  font-size: 24px;
+  font-weight: 400;
+  color: var(--text-primary);
+  margin-top: 14px;
+}
+
+.display-phone {
+  font-size: 16px;
+  color: var(--text-secondary);
+  margin-top: 20px;
+}
+.search-action-text {
+  font-weight: 500;
+  color: var(--text-primary);
+}
+
+.info-card {
+  background-color: var(--bg-primary);
+  padding: 20px 30px;
+  display: flex;
+  flex-direction: column;
+}
+
+.info-about,
+.info-media-box {
+  border-bottom: 1px solid #f0f2f5;
+}
+.section-label {
+  font-size: 14px;
+  color: #667781;
+  font-weight: 400;
+  margin-bottom: 12px;
+}
+.about-text {
+  font-size: 16px;
+  color: #111b21;
+}
+
+.media-header-link {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+}
+.media-title-left {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  color: var(--text-primary);
+  font-size: 16px;
+}
+.media-count {
+  color: var(--text-secondary);
+  font-size: 14px;
+}
+
+.info-card-list {
+  background-color: var(--bg-primary);
+  display: flex;
+  flex-direction: column;
+
+  svg {
+    fill: var(--text-secondary);
+  }
 }
