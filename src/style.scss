@@ -182,3 +182,107 @@ svg {
   fill: #53bdeb;
   font-size: 14px;
 }
+
+.chat-window {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  background-color: var(--bg-secondary);
+  
+  .icon-wrapper svg { fill: var(--text-primary); }
+}
+
+.message-feed {
+  flex: 1;
+  overflow-y: auto;
+  padding: 20px 8%;
+  display: flex;
+  flex-direction: column;
+}
+
+.date-divider {
+  align-self: center;
+  margin: 15px 0;
+  background-color: var(--bg-primary);
+  padding: 5px 12px;
+  border-radius: 8px;
+  color: var(--text-secondary);
+  font-size: 12.5px;
+}
+
+.msg-row {
+  display: flex;
+  width: 100%;
+  margin-bottom: 8px;
+  
+  &--received { justify-content: flex-start; 
+    .msg-bubble { background-color: var(--bg-primary); border-top-left-radius: 0; }
+  }
+  &--sent { justify-content: flex-end; 
+    .msg-bubble { background-color: $whatsapp-light-green; border-top-right-radius: 0; }
+  }
+}
+
+.msg-bubble {
+  max-width: 65%;
+  padding: 8px 10px;
+  border-radius: 8px;
+  position: relative;
+  font-size: 14.2px;
+  display: flex;
+  color: var(--text-primary);
+  flex-direction: column;
+  
+  .msg-text { color: var(--text-primary); }
+}
+
+.msg-meta {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 4px;
+  margin-top: 2px;
+  
+  svg { width: 14px; height: 14px; }
+}
+
+.msg-time { font-size: 11px; color: var(--text-secondary); }
+
+.log-content {
+  display: flex;
+  gap: 15px;
+  align-items: flex-start;
+  padding: 10px 5px;
+}
+
+.log-icon {
+  width: 45px;
+  height: 45px;
+  background: #2a3942;
+  border-radius: 50%;
+  @include flex-center;
+}
+
+.chat-footer {
+  height: 62px;
+  margin: 15px;
+  background-color: var(--bg-primary);
+  box-shadow: 0 4px 6px -6px #222;
+  border-radius: 40px;
+  display: flex;
+  align-items: center;
+  padding: 0 14px;
+  gap: 5px;
+}
+
+.chat-input {
+  flex: 1;
+  background-color: transparent;
+  border: none;
+  font-size: 18px;
+  border-radius: 8px;
+  padding: 5px 5px;
+  color: var(--text-primary);
+  outline: none;
+}
