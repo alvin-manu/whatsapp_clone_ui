@@ -1,0 +1,202 @@
+.avatar-frame {
+  width: 49px;
+  height: 49px;
+  border-radius: 50%;
+  overflow: hidden;
+  flex-shrink: 0;
+
+  .avatar-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+.icon-wrapper {
+  position: relative;
+  padding: 6px 8px;
+  @include flex-center;
+  cursor: pointer;
+
+  &:hover {
+    background-color: var(--hover-primary);
+    border-radius: 50%;
+  }
+}
+
+.badge {
+  position: absolute;
+  background-color: $whatsapp-green;
+  border-radius: 50%;
+  @include flex-center;
+
+  &--number {
+    border: 1px solid white;
+    color: white;
+    top: -4px;
+    right: -4px;
+    min-width: 18px;
+    height: 18px;
+    font-size: 13px;
+    font-weight: bold;
+    padding: 5px;
+  }
+
+  &--dot {
+    top: 0px;
+    right: 2px;
+    width: 8px;
+    height: 8px;
+  }
+}
+
+.unread-count {
+  background-color: $whatsapp-green;
+  color: var(--bg-primary);
+  font-size: 12px;
+  font-weight: bold;
+  min-width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  @include flex-center;
+}
+
+.pill {
+  background-color: white;
+  border: 1px solid #d6d6d6;
+  border-radius: 16px;
+  padding: 6px 12px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #00000099;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: 0.2s;
+
+  &:hover {
+    background-color: var(--bg-secondary);
+  }
+
+  &.active {
+    background-color: $whatsapp-light-green;
+    color: $whatsapp-dark-green;
+    font-weight: bold;
+  }
+}
+
+.btn-icon--circle-green {
+  background-color: $whatsapp-green !important;
+  border: none;
+  color: white !important;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  @include flex-center;
+
+  svg {
+    fill: var(--bg-primary);
+    border: none;
+  }
+}
+
+.panel-header {
+  height: 60px;
+  background-color: var(--bg-primary);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 16px;
+  box-shadow: 0 4px 6px -6px #222;
+  flex-shrink: 0;
+}
+
+.info-row {
+  @include flex-align-center;
+  padding: 15px 30px;
+  gap: 24px;
+  cursor: pointer;
+  border-radius: 10px;
+  background-color: var(--bg-primary);
+  transition: background 0.15s ease;
+
+  &:hover {
+    background-color: var(--bg-secondary);
+  }
+
+  &.justify-space { justify-content: space-between; }
+  &.align-start { align-items: flex-start; }
+
+  .row-left-content {
+    @include flex-align-center;
+    gap: 24px;
+    flex: 1;
+  }
+
+  .row-text-group {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+
+    .row-title {
+      font-size: 16px;
+      color: var(--text-primary);
+      font-weight: 400;
+    }
+
+    .row-subtext {
+      font-size: 14px;
+      color: var(--text-secondary);
+      margin-top: 2px;
+    }
+
+    .row-subtext--long {
+      line-height: 1.4;
+      margin-top: 4px;
+    }
+  }
+
+  &--danger {
+    .row-title, .row-icon { color: $danger-red; }
+    svg { fill: $danger-red; }
+    &:hover { background-color: $danger-hover-bg; }
+  }
+}
+
+.toggle-switch {
+  position: relative;
+  width: 36px;
+  height: 20px;
+  flex-shrink: 0;
+
+  input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+
+    &:checked + .toggle-slider {
+      background-color: #00a884;
+      &:before { transform: translateX(16px); }
+    }
+  }
+
+  .toggle-slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-color: #aeacab;
+    transition: 0.3s;
+    border-radius: 20px;
+
+    &:before {
+      position: absolute;
+      content: "";
+      height: 14px;
+      width: 14px;
+      left: 3px;
+      bottom: 3px;
+      background-color: white;
+      transition: 0.3s;
+      border-radius: 50%;
+    }
+  }
+}
