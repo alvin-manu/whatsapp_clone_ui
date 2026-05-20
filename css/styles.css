@@ -517,11 +517,10 @@ svg {
   gap: 10px;
 }
 
-.info-card {
-  background-color: var(--bg-primary);
-  padding: 20px 30px;
-  display: flex;
-  flex-direction: column;
+.avatar--sm{
+  cursor: pointer;
+  width: 40px;
+  height: 40px;
 }
 
 .avatar--lg {
