@@ -1,4 +1,20 @@
-@import 'variables';
+:root {
+  --bg-primary: #ffffff;
+  --bg-secondary: #f7f5f3;
+  --text-primary: #0a0a0a;
+  --text-secondary: #636261;
+  --hover-primary: #eae8e7;
+  --hover-secondary: #f6f5f4;
+}
+
+.dark-theme {
+  --bg-primary: #161717;
+  --bg-secondary: #1d1f1f;
+  --text-primary: #fafafa;
+  --text-secondary: #a5a5a5;
+  --hover-primary: #292a2a;
+  --hover-secondary: #2e2f2f;
+}
 
 * {
   margin: 0px;
@@ -20,7 +36,7 @@ svg {
 }
 
 .navContainer {
-  width: $nav-width;
+  width: 65px;
   height: 100vh;
   background-color: var(--bg-secondary);
   display: flex;
