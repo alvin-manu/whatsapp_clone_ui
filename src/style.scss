@@ -85,6 +85,7 @@ svg {
 .header-right {
   display: flex;
   align-items: center;
+  gap: 10px;
 }
 .header-top {
   justify-content: space-between;
@@ -231,7 +232,9 @@ svg {
   display: flex;
   flex-direction: column;
   height: 100vh;
-  background-color: var(--bg-secondary);
+  background-image: url("https://i1-e.pinimg.com/1200x/e2/5a/01/e25a01a5535c801940e7d5d134049d93.jpg");
+  background-repeat: repeat;
+  background-size: 400px;
 
   .icon-wrapper svg {
     fill: var(--text-primary);
@@ -310,20 +313,6 @@ svg {
   color: var(--text-secondary);
 }
 
-.log-content {
-  display: flex;
-  gap: 15px;
-  align-items: flex-start;
-  padding: 10px 5px;
-}
-
-.log-icon {
-  width: 45px;
-  height: 45px;
-  background: #2a3942;
-  border-radius: 50%;
-  @include flex-center;
-}
 
 .chat-footer {
   height: 62px;

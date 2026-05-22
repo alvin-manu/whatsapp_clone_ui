@@ -22,6 +22,10 @@
     background-color: var(--hover-primary);
     border-radius: 50%;
   }
+
+  span{
+    @include flex-center;
+  }
 }
 
 .badge {
@@ -110,6 +114,10 @@
   padding: 0 16px;
   box-shadow: 0 4px 6px -6px #222;
   flex-shrink: 0;
+
+  .header-title{
+    margin-left: 5px;
+  }
 }
 
 .info-row {
@@ -158,8 +166,8 @@
   }
 
   &--danger {
-    .row-title{ color: $danger-red; }
-    svg { fill: $danger-red; }
+    .row-text-group .row-title{ color: $danger-red !important; }
+    svg { fill: $danger-red !important; }
     &:hover { background-color: $danger-hover-bg; }
   }
 }
