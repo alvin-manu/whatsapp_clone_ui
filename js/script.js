@@ -18,6 +18,16 @@ class SidebarComponent {
     }
     chatListRender(chatData, chatId = 1) {
 
+        chatData.sort((chatA, chatB)=>{
+            const lastMsgA = chatA.messages[chatA.messages.length - 1];
+            const lastMsgB = chatB.messages[chatB.messages.length - 1];
+            
+            const timeA = lastMsgA ? lastMsgA.timestamp : 0;
+            const timeB = lastMsgB ? lastMsgB.timestamp : 0;
+            
+            return timeB - timeA;
+        })
+
         this.chatListContainer.innerHTML = ""
         const fragment = document.createDocumentFragment();
 
