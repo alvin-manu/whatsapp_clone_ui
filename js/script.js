@@ -4,7 +4,7 @@ class Message {
         this.text = text;
         this.type = type;
         const now = new Date();
-        this.time = now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }).toLowerCase();
+        this.time = now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', hour12: true }).toLowerCase();
         this.timestamp = now.getTime();
     }
 }
@@ -13,7 +13,19 @@ class Message {
 class SidebarComponent {
     constructor() {
         this.chatListContainer = document.querySelector('.chat-row-list')
+        this.searchInput = document.querySelector(".search-wrapper .search-input");
+        this.currentSearchQuery = "";
+
+        this.initSearchListener();
     }
+
+    initSearchListener() {
+        this.searchInput.addEventListener("input", (e) => {
+            this.currentSearchQuery = e.target.value.toLowerCase().trim();
+            obj.renderAll();
+        });
+    }
+
     chatListRender(chatData, chatId, onChatSelect) {
 
         chatData.sort((chatA, chatB) => {
@@ -29,14 +41,17 @@ class SidebarComponent {
         this.chatListContainer.innerHTML = ""
         const fragment = document.createDocumentFragment();
 
-        chatData.forEach(item => {
+        const filteredChats = chatData.filter(chat => 
+            chat.name.toLowerCase().includes(this.currentSearchQuery)
+        );
+
+        filteredChats.forEach(item => {
             const chatItem = document.createElement("div")
             chatItem.className = `chat-item ${item.id === chatId ? "active" : ""}`
 
             const lastMsg = item.messages[item.messages.length - 1];
             const previewText = lastMsg ? lastMsg.text : "No messages";
             const previewTime = lastMsg ? lastMsg.time : "";
-            console.log(lastMsg.timestamp)
 
             chatItem.innerHTML = `
             <div class="avatar-frame">
@@ -199,6 +214,28 @@ class WhatsAppApplication {
                     { id: 3, text: "Hello", time: "09:28 pm", timestamp: Date.now() - 40040, type: "received" },
                     { id: 4, text: "submit your notes", time: "09:30 pm", timestamp: Date.now() - 35060, type: "received" },
                     { id: 5, text: "Ok", time: "09:32 pm", timestamp: Date.now() - 33070, type: "sent" }
+                ]
+            },
+         {
+                id: 3, name: "User 3", phone: "+91 7777777777", about: "Just Living!",
+                avatar: "https://cdn.pixabay.com/photo/2023/02/18/11/00/icon-7797704_640.png",
+                messages: [
+                    { id: 1, text: "Hii", time: "09:24 pm", timestamp: Date.now() - 50000, type: "received" },
+                    { id: 2, text: "Hii", time: "09:24 pm", timestamp: Date.now() - 40000, type: "sent" }
+                ]
+            }, {
+                id: 4, name: "User 4", phone: "+91 6666666666", about: "Just Living!",
+                avatar: "https://cdn.pixabay.com/photo/2023/02/18/11/00/icon-7797704_640.png",
+                messages: [
+                    { id: 1, text: "Hii", time: "09:20 pm", timestamp: Date.now() - 50000, type: "received" },
+                    { id: 2, text: "Hii", time: "09:22 pm", timestamp: Date.now() - 42000, type: "sent" }
+                ]
+            }, {
+                id: 5, name: "User 5", phone: "+91 5555555555", about: "Just Living!",
+                avatar: "https://cdn.pixabay.com/photo/2023/02/18/11/00/icon-7797704_640.png",
+                messages: [
+                    { id: 1, text: "Hii", time: "09:16 pm", timestamp: Date.now() - 50000, type: "received" },
+                    { id: 2, text: "Hii", time: "09:18 pm", timestamp: Date.now() - 43000, type: "sent" }                    
                 ]
             }]
         }
