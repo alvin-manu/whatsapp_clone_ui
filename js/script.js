@@ -132,7 +132,7 @@ class ChatWindowComponent {
 
         })
         this.messageFeed.appendChild(fragment);
-
+        this.scrollToBottom();
     }
 
     getInputValue() {
@@ -140,6 +140,9 @@ class ChatWindowComponent {
     }
     clearInput() {
         this.chatInput.value = "";
+    }
+    scrollToBottom(){
+        this.messageFeed.scrollTop = this.messageFeed.scrollHeight; 
     }
 }
 
@@ -195,6 +198,9 @@ class WhatsAppApplication {
         this.activeChatId = chatId;
         this.renderAll();
     }
+    saveToStorage() {
+        localStorage.setItem("chatListData", JSON.stringify(this.chatsPool));
+    }
 
     renderAll() {
         const activeChat = this.chatsPool.find(c => c.id === this.activeChatId) ;
@@ -211,6 +217,7 @@ class WhatsAppApplication {
 
         const newMsg = new Message(message, "sent");
         activeChat.messages.push(newMsg);
+        this.saveToStorage();
 
         this.chatWindow.clearInput();
         this.renderAll();
