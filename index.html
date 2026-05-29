@@ -276,11 +276,11 @@
             <header class="panel-header">
                 <div class="header-left chatHeaderLeft">
                     <div class="avatar-frame avatar--sm">
-                        <img src="https://t3.ftcdn.net/jpg/13/11/22/86/360_F_1311228699_YoiLc5aJ3RWz3uRfdEtlV0UYSQjqf7RW.jpg"
-                            alt="User" class="avatar-img">
+                        <img src=""
+                            alt="User" class="avatar-img chat-window-img">
                     </div>
                     <div class="user-info">
-                        <span class="chat-name">User 1</span>
+                        <span class="chat-name chat-window-username">User 1</span>
                     </div>
                 </div>
 
@@ -335,7 +335,7 @@
                 <div class="date-divider"><span>Tuesday</span></div>
 
                 <!-- Received Bubble -->
-                <div class="msg-row msg-row--received">
+                <!-- <div class="msg-row msg-row--received">
                     <div class="msg-bubble">
                         <p class="msg-text">Hii</p>
                         <div class="msg-meta">
@@ -344,7 +344,6 @@
                     </div>
                 </div>
 
-                <!-- Sent Bubble -->
                 <div class="msg-row msg-row--sent">
                     <div class="msg-bubble">
                         <p class="msg-text">hello</p>
@@ -363,7 +362,6 @@
 
                 <div class="date-divider"><span>Yesterday</span></div>
 
-                <!-- Sent Bubble -->
                 <div class="msg-row msg-row--sent">
                     <div class="msg-bubble">
                         <p class="msg-text">Hi</p>
@@ -382,7 +380,6 @@
 
                 <div class="date-divider"><span>Today</span></div>
 
-                <!-- Sent Bubble -->
                 <div class="msg-row msg-row--sent">
                     <div class="msg-bubble">
                         <p class="msg-text">Hello</p>
@@ -413,7 +410,7 @@
                             </svg>
                         </div>
                     </div>
-                </div>
+                </div> -->
 
 
             </div>
@@ -452,15 +449,8 @@
 
                 <input type="text" placeholder="Type a message" class="chat-input">
 
-                <div class="icon-wrapper">
-                    <span data-testid="mic-filled" aria-hidden="true" data-icon="mic-filled"
-                        class="xxk0z11 xvy4d1p"><svg viewBox="0 0 24 24" height="24" width="24"
-                            preserveAspectRatio="xMidYMid meet" class="" fill="none">
-                            <title>mic-filled</title>
-                            <path
-                                d="M12 14a2.9 2.9 0 0 1-2.125-.875A2.9 2.9 0 0 1 9 11V5q0-1.25.875-2.125A2.9 2.9 0 0 1 12 2q1.25 0 2.125.875T15 5v6q0 1.25-.875 2.125A2.9 2.9 0 0 1 12 14m0 7a1 1 0 0 1-1-1v-2.075q-2.6-.35-4.3-2.325-1.37-1.59-1.636-3.603C4.992 11.45 5.448 11 6 11s.988.452 1.09.995q.274 1.443 1.373 2.543Q9.926 16 12 16q2.075 0 3.537-1.463 1.099-1.098 1.373-2.543c.102-.542.538-.994 1.09-.994s1.008.45.936.997Q18.669 14.01 17.3 15.6q-1.7 1.975-4.3 2.325V20a1 1 0 0 1-1 1"
-                                fill="currentColor"></path>
-                        </svg></span>
+                <div class="icon-wrapper" style="background-color: #1daa61; border-radius: 50%;"  onmouseover="this.style.backgroundColor='#1a9254';" onmouseout="this.style.backgroundColor='#1daa61';">
+                    <span onclick="obj.executeMessageSend()" data-testid="send" aria-hidden="true" data-icon="wds-ic-send-filled" class="xxk0z11 xvy4d1p"><svg viewBox="0 0 24 24" height="24" width="24" preserveAspectRatio="xMidYMid meet" class="send-btn" fill="" style="fill: white;"><title>send</title><path d="M5.4 19.425C5.06667 19.5583 4.75 19.5291 4.45 19.3375C4.15 19.1458 4 18.8666 4 18.5V14L12 12L4 9.99997V5.49997C4 5.1333 4.15 4.85414 4.45 4.66247C4.75 4.4708 5.06667 4.44164 5.4 4.57497L20.8 11.075C21.2167 11.2583 21.425 11.5666 21.425 12C21.425 12.4333 21.2167 12.7416 20.8 12.925L5.4 19.425Z" fill="#ffffff"></path></svg></span>
                 </div>
             </footer>
         </main>
