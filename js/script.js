@@ -12,6 +12,18 @@ closeBtn.addEventListener("click", (event) => {
     rightSidebar.classList.remove("active");
 });
 
+class Message {
+    constructor(text, type) {
+        this.id = Date.now() + Math.random();
+        this.text = text;
+        this.type = type;
+        const now = new Date();
+        this.time = now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }).toLowerCase();
+        this.timestamp = now.getTime();
+    }
+}
+
+
 class SidebarComponent {
     constructor() {
         this.chatListContainer = document.querySelector('.chat-row-list')
@@ -69,7 +81,7 @@ class SidebarComponent {
                         </div>
                     </div>
             `
-             chatItem.addEventListener("click", () => {
+            chatItem.addEventListener("click", () => {
                 onChatSelect(item.id);
             });
 
@@ -90,7 +102,7 @@ class ChatWindowComponent {
     }
     updateHeader(contact) {
         this.headerName.textContent = contact.name
-        this.headerAvatar = contact.avatar
+        this.headerAvatar.src = contact.avatar
     }
 
     renderFeed(contact) {
@@ -123,6 +135,12 @@ class ChatWindowComponent {
 
     }
 
+    getInputValue() {
+        return this.chatInput.value.trim();
+    }
+    clearInput() {
+        this.chatInput.value = "";
+    }
 }
 
 
@@ -130,6 +148,7 @@ class WhatsAppApplication {
     constructor() {
         this.chatsPool = []
         this.activeChatId = null
+        this.sentBtn = document.querySelector(".sent-btn")
         this.chatWindow = new ChatWindowComponent()
         this.sidebar = new SidebarComponent()
 
@@ -169,6 +188,7 @@ class WhatsAppApplication {
                 ]
             }]
         }
+        this.activeChatId = this.chatsPool[0].id
     }
 
     handleChatSelection(chatId) {
@@ -177,10 +197,23 @@ class WhatsAppApplication {
     }
 
     renderAll() {
-        const activeChat = this.chatsPool.find(c => c.id === this.activeChatId) || this.chatsPool[0];
+        const activeChat = this.chatsPool.find(c => c.id === this.activeChatId) ;
         this.sidebar.chatListRender(this.chatsPool, activeChat.id, this.handleChatSelection.bind(this))
         this.chatWindow.renderFeed(activeChat)
         this.chatWindow.updateHeader(activeChat);
+    }
+
+    executeMessageSend() {
+        const message = this.chatWindow.getInputValue()
+        if (message === "") return;
+
+        const activeChat = this.chatsPool.find(c => c.id === this.activeChatId);
+
+        const newMsg = new Message(message, "sent");
+        activeChat.messages.push(newMsg);
+
+        this.chatWindow.clearInput();
+        this.renderAll();
     }
 }
 
