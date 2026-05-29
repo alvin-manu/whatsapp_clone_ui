@@ -1,17 +1,3 @@
-
-const chatHeaderLeft = document.querySelector(".chatHeaderLeft");
-const closeBtn = document.querySelector(".sidebar-close");
-const rightSidebar = document.querySelector(".profileInfo");
-
-chatHeaderLeft.addEventListener("click", () => {
-    rightSidebar.classList.add("active");
-});
-
-closeBtn.addEventListener("click", (event) => {
-    event.stopPropagation();
-    rightSidebar.classList.remove("active");
-});
-
 class Message {
     constructor(text, type) {
         this.id = Date.now() + Math.random();
@@ -147,6 +133,30 @@ class ChatWindowComponent {
 }
 
 
+class ProfileComponent {
+    constructor() {
+        this.panel = document.querySelector(".profileInfo");
+        this.nameElem = document.querySelector(".display-name");
+        this.phoneElem = document.querySelector(".display-phone");
+        this.avatarElem = document.querySelector(".profileInfo .avatar-img");
+        this.about = document.querySelector(".about-text");
+        
+    }
+
+    updateProfileDetails(contact) {
+        this.nameElem.textContent = contact.name;
+        this.phoneElem.textContent = contact.phone;
+        this.about.textContent = contact.about;
+        this.avatarElem.src = contact.avatar;
+    }
+
+    toggleView(show = true) {
+        if (show) this.panel.classList.add("active");
+        else this.panel.classList.remove("active");
+    }
+}
+
+
 class WhatsAppApplication {
     constructor() {
         this.chatsPool = []
@@ -154,6 +164,7 @@ class WhatsAppApplication {
         this.sentBtn = document.querySelector(".sent-btn")
         this.chatWindow = new ChatWindowComponent()
         this.sidebar = new SidebarComponent()
+        this.profilePanel = new ProfileComponent()
 
     }
 
@@ -207,6 +218,9 @@ class WhatsAppApplication {
         this.sidebar.chatListRender(this.chatsPool, activeChat.id, this.handleChatSelection.bind(this))
         this.chatWindow.renderFeed(activeChat)
         this.chatWindow.updateHeader(activeChat);
+        
+        this.profilePanel.updateProfileDetails(activeChat);
+
     }
 
     executeMessageSend() {

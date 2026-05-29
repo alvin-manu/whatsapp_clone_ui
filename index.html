@@ -275,7 +275,7 @@
         <main class="chat-window">
             <header class="panel-header">
                 <div class="header-left chatHeaderLeft">
-                    <div class="avatar-frame avatar--sm">
+                    <div class="avatar-frame avatar--sm" onclick="obj.profilePanel.toggleView(true)"> 
                         <img src=""
                             alt="User" class="avatar-img chat-window-img">
                     </div>
@@ -458,7 +458,7 @@
         <aside class="profileInfo">
             <header class="panel-header">
                 <div class="header-left">
-                    <div class="icon-wrapper sidebar-close">
+                    <div class="icon-wrapper sidebar-close" onclick="obj.profilePanel.toggleView(false)">
                         <span aria-hidden="true" class="xxk0z11 xvy4d1p"><svg viewBox="0 0 24 24" height="24" width="24"
                                 preserveAspectRatio="xMidYMid meet" class="">
                                 <title>Close</title>
@@ -492,7 +492,7 @@
                         <img src="https://t3.ftcdn.net/jpg/13/11/22/86/360_F_1311228699_YoiLc5aJ3RWz3uRfdEtlV0UYSQjqf7RW.jpg"
                             class="avatar-img" alt="Sebin">
                     </div>
-                    <h2 class="display-name">User 1</h2>
+                    <h2 class="display-name">User</h2>
                     <p class="display-phone">+91 9999999999</p>
 
                     <button class="pill">
