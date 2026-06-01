@@ -1,3 +1,13 @@
+const PRELOADED_REPLIES = [
+    "Hey! I'm a bit busy right now, will check this later.",
+    "Wow, that sounds interesting",
+    "Let's catch up this weekend.",
+    "Okay, cool.",
+    "Perfect! Thanks for the update.",
+    "Hey, what's up?"
+];
+
+
 class Message {
     constructor(text, type) {
         this.id = Date.now() + Math.random();
@@ -41,7 +51,7 @@ class SidebarComponent {
         this.chatListContainer.innerHTML = ""
         const fragment = document.createDocumentFragment();
 
-        const filteredChats = chatData.filter(chat => 
+        const filteredChats = chatData.filter(chat =>
             chat.name.toLowerCase().includes(this.currentSearchQuery)
         );
 
@@ -67,7 +77,7 @@ class SidebarComponent {
 
                         <div class="chat-footer-row">
                             <div class="msg-preview">
-                                <span data-testid="status-dblcheck" aria-hidden="true" data-icon="status-dblcheck"
+                            ${lastMsg.type == "sent" ? ` <span data-testid="status-dblcheck" aria-hidden="true" data-icon="status-dblcheck"
                                     class="status-check status-seen"><svg viewBox="0 0 18 18" height="18" width="18"
                                         preserveAspectRatio="xMidYMid meet" class="" version="1.1" x="0px" y="0px"
                                         enable-background="new 0 0 18 18">
@@ -75,8 +85,8 @@ class SidebarComponent {
                                         <path
                                             d="M17.394,5.035l-0.57-0.444c-0.188-0.147-0.462-0.113-0.609,0.076l-6.39,8.198 c-0.147,0.188-0.406,0.206-0.577,0.039l-0.427-0.388c-0.171-0.167-0.431-0.15-0.578,0.038L7.792,13.13 c-0.147,0.188-0.128,0.478,0.043,0.645l1.575,1.51c0.171,0.167,0.43,0.149,0.577-0.039l7.483-9.602 C17.616,5.456,17.582,5.182,17.394,5.035z M12.502,5.035l-0.57-0.444c-0.188-0.147-0.462-0.113-0.609,0.076l-6.39,8.198 c-0.147,0.188-0.406,0.206-0.577,0.039l-2.614-2.556c-0.171-0.167-0.447-0.164-0.614,0.007l-0.505,0.516 c-0.167,0.171-0.164,0.447,0.007,0.614l3.887,3.8c0.171,0.167,0.43,0.149,0.577-0.039l7.483-9.602 C12.724,5.456,12.69,5.182,12.502,5.035z">
                                         </path>
-                                    </svg></span>
-
+                                    </svg></span>`: ""}
+                               
                                 <span class="msg-text">${previewText}</span>
                             </div>
                         </div>
@@ -142,8 +152,8 @@ class ChatWindowComponent {
     clearInput() {
         this.chatInput.value = "";
     }
-    scrollToBottom(){
-        this.messageFeed.scrollTop = this.messageFeed.scrollHeight; 
+    scrollToBottom() {
+        this.messageFeed.scrollTop = this.messageFeed.scrollHeight;
     }
 }
 
@@ -155,7 +165,7 @@ class ProfileComponent {
         this.phoneElem = document.querySelector(".display-phone");
         this.avatarElem = document.querySelector(".profileInfo .avatar-img");
         this.about = document.querySelector(".about-text");
-        
+
     }
 
     updateProfileDetails(contact) {
@@ -203,7 +213,8 @@ class WhatsAppApplication {
                     { id: 3, text: "Hi", time: "10:28 pm", timestamp: Date.now() - 40040, type: "received" },
                     { id: 4, text: "Hi, Good Morning", time: "10:30 pm", timestamp: Date.now() - 35060, type: "received" },
                     { id: 5, text: "Hii sir, Good Morning", time: "10:32 pm", timestamp: Date.now() - (32000), type: "sent" }
-                ]
+                ],
+                unreadCount: 0
             },
             {
                 id: 2, name: "User 2", phone: "+91 8888888888", about: "Just Living!",
@@ -214,29 +225,33 @@ class WhatsAppApplication {
                     { id: 3, text: "Hello", time: "09:28 pm", timestamp: Date.now() - 40040, type: "received" },
                     { id: 4, text: "submit your notes", time: "09:30 pm", timestamp: Date.now() - 35060, type: "received" },
                     { id: 5, text: "Ok", time: "09:32 pm", timestamp: Date.now() - 33070, type: "sent" }
-                ]
+                ],
+                unreadCount: 0
             },
-         {
+            {
                 id: 3, name: "User 3", phone: "+91 7777777777", about: "Just Living!",
                 avatar: "https://cdn.pixabay.com/photo/2023/02/18/11/00/icon-7797704_640.png",
                 messages: [
                     { id: 1, text: "Hii", time: "09:24 pm", timestamp: Date.now() - 50000, type: "received" },
                     { id: 2, text: "Hii", time: "09:24 pm", timestamp: Date.now() - 40000, type: "sent" }
-                ]
+                ],
+                unreadCount: 0
             }, {
                 id: 4, name: "User 4", phone: "+91 6666666666", about: "Just Living!",
                 avatar: "https://cdn.pixabay.com/photo/2023/02/18/11/00/icon-7797704_640.png",
                 messages: [
                     { id: 1, text: "Hii", time: "09:20 pm", timestamp: Date.now() - 50000, type: "received" },
                     { id: 2, text: "Hii", time: "09:22 pm", timestamp: Date.now() - 42000, type: "sent" }
-                ]
+                ],
+                unreadCount: 0
             }, {
                 id: 5, name: "User 5", phone: "+91 5555555555", about: "Just Living!",
                 avatar: "https://cdn.pixabay.com/photo/2023/02/18/11/00/icon-7797704_640.png",
                 messages: [
                     { id: 1, text: "Hii", time: "09:16 pm", timestamp: Date.now() - 50000, type: "received" },
-                    { id: 2, text: "Hii", time: "09:18 pm", timestamp: Date.now() - 43000, type: "sent" }                    
-                ]
+                    { id: 2, text: "Hii", time: "09:18 pm", timestamp: Date.now() - 43000, type: "sent" }
+                ],
+                unreadCount: 0
             }]
         }
         this.activeChatId = this.chatsPool[0].id
@@ -251,11 +266,11 @@ class WhatsAppApplication {
     }
 
     renderAll() {
-        const activeChat = this.chatsPool.find(c => c.id === this.activeChatId) ;
+        const activeChat = this.chatsPool.find(c => c.id === this.activeChatId);
         this.sidebar.chatListRender(this.chatsPool, activeChat.id, this.handleChatSelection.bind(this))
         this.chatWindow.renderFeed(activeChat)
         this.chatWindow.updateHeader(activeChat);
-        
+
         this.profilePanel.updateProfileDetails(activeChat);
 
     }
@@ -272,6 +287,29 @@ class WhatsAppApplication {
 
         this.chatWindow.clearInput();
         this.renderAll();
+        this.triggerAutoReply(activeChat);
+    }
+
+
+    triggerAutoReply(chatToReply) {
+        setTimeout(() => {
+
+            const randomIndex = Math.floor(Math.random() * PRELOADED_REPLIES.length);
+            const replyText = PRELOADED_REPLIES[randomIndex];
+
+            const incomingMsg = new Message(replyText, "received");
+
+
+            chatToReply.messages.push(incomingMsg);
+
+            if (this.activeChatId !== chatToReply.id) {
+                chatToReply.unreadCount = (chatToReply.unreadCount || 0) + 1;
+            }
+
+            this.saveToStorage();
+            this.renderAll();
+            console.log(this.chatsPool)
+        }, 3000);
     }
 }
 
