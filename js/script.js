@@ -36,7 +36,7 @@ class SidebarComponent {
         });
     }
 
-    chatListRender(chatData, chatId, onChatSelect) {
+    chatListRender(chatData, chatId = null, onChatSelect) {
 
         chatData.sort((chatA, chatB) => {
             const lastMsgA = chatA.messages[chatA.messages.length - 1];
@@ -110,10 +110,23 @@ class ChatWindowComponent {
         this.chatInput = document.querySelector(".chat-input")
         this.headerName = document.querySelector(".chat-window-username")
         this.headerAvatar = document.querySelector(".chat-window-img")
+
+        this.landingViewPanel = document.querySelector("#landingViewPanel");
+        this.activeConversationPanel = document.querySelector("#activeConversationPanel");
     }
     updateHeader(contact) {
         this.headerName.textContent = contact.name
         this.headerAvatar.src = contact.avatar
+    }
+
+    toggleViewState(hasActiveChat) {
+        if (hasActiveChat) {
+            this.landingViewPanel.classList.add("d-none");
+            this.activeConversationPanel.classList.remove("d-none");
+        } else {
+            this.landingViewPanel.classList.remove("d-none");
+            this.activeConversationPanel.classList.add("d-none");
+        }
     }
 
     renderFeed(contact) {
@@ -191,11 +204,18 @@ class WhatsAppApplication {
         this.sidebar = new SidebarComponent()
         this.profilePanel = new ProfileComponent()
 
+        this.darkModeToggle = document.querySelector("#darkModeToggle");
+
     }
 
     init() {
         this.loadData()
         this.renderAll()
+    }
+
+    toggleTheme() {
+        console.log("dark modeeee")
+        const darkModeActive = document.body.classList.toggle("dark-theme");
     }
 
     loadData() {
@@ -254,11 +274,11 @@ class WhatsAppApplication {
                 unreadCount: 0
             }]
         }
-        this.activeChatId = this.chatsPool[0].id
     }
 
     handleChatSelection(chatId) {
         this.activeChatId = chatId;
+        this.chatWindow.toggleViewState(true)
         this.renderAll();
     }
     saveToStorage() {
@@ -267,7 +287,7 @@ class WhatsAppApplication {
 
     renderAll() {
         const activeChat = this.chatsPool.find(c => c.id === this.activeChatId);
-        this.sidebar.chatListRender(this.chatsPool, activeChat.id, this.handleChatSelection.bind(this))
+        this.sidebar.chatListRender(this.chatsPool, activeChat? activeChat.id: null, this.handleChatSelection.bind(this))
         this.chatWindow.renderFeed(activeChat)
         this.chatWindow.updateHeader(activeChat);
 
