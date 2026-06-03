@@ -23,7 +23,7 @@
     border-radius: 50%;
   }
 
-  span{
+  span {
     @include flex-center;
   }
 }
@@ -85,6 +85,10 @@
     background-color: var(--whatsapp-green);
     color: var(--whatsapp-clr-green);
     font-weight: bold;
+
+    &:hover {
+      background-color: var(--whatsapp-hover-green);
+    }
   }
 }
 
@@ -101,7 +105,6 @@
     fill: var(--bg-primary);
     border: none;
     @include flex-center;
-   
   }
 }
 
@@ -115,7 +118,7 @@
   box-shadow: 0 4px 6px -6px #222;
   flex-shrink: 0;
 
-  .header-title{
+  .header-title {
     margin-left: 5px;
   }
 }
@@ -133,8 +136,12 @@
     background-color: var(--bg-secondary);
   }
 
-  &.justify-space { justify-content: space-between; }
-  &.align-start { align-items: flex-start; }
+  &.justify-space {
+    justify-content: space-between;
+  }
+  &.align-start {
+    align-items: flex-start;
+  }
 
   .row-left-content {
     @include flex-align-center;
@@ -166,9 +173,15 @@
   }
 
   &--danger {
-    .row-text-group .row-title{ color: $danger-red !important; }
-    svg { fill: $danger-red !important; }
-    &:hover { background-color: $danger-hover-bg; }
+    .row-text-group .row-title {
+      color: $danger-red !important;
+    }
+    svg {
+      fill: $danger-red !important;
+    }
+    &:hover {
+      background-color: $danger-hover-bg;
+    }
   }
 }
 
@@ -185,14 +198,19 @@
 
     &:checked + .toggle-slider {
       background-color: #00a884;
-      &:before { transform: translateX(16px); }
+      &:before {
+        transform: translateX(16px);
+      }
     }
   }
 
   .toggle-slider {
     position: absolute;
     cursor: pointer;
-    top: 0; left: 0; right: 0; bottom: 0;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
     background-color: #aeacab;
     transition: 0.3s;
     border-radius: 20px;
