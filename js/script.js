@@ -191,11 +191,18 @@ class WhatsAppApplication {
         this.sidebar = new SidebarComponent()
         this.profilePanel = new ProfileComponent()
 
+        this.darkModeToggle = document.querySelector("#darkModeToggle");
+
     }
 
     init() {
         this.loadData()
         this.renderAll()
+    }
+
+    toggleTheme() {
+        console.log("dark modeeee")
+        const darkModeActive = document.body.classList.toggle("dark-theme");
     }
 
     loadData() {

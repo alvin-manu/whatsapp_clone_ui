@@ -99,6 +99,13 @@
                     </div>
                 </div>
 
+                <div class="nav-item">
+                    <div class="icon-wrapper" id="darkModeToggle" onclick="obj.toggleTheme()">
+                        <span data-testid="community-refreshed-32" aria-hidden="true" data-icon="community-refreshed-32"
+                            class=""><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><path d="M320 32C328.4 32 336.3 36.4 340.6 43.7L396.1 136.3L500.9 110C509.1 108 517.8 110.4 523.7 116.3C529.6 122.2 532 131 530 139.1L503.7 243.8L596.4 299.3C603.6 303.6 608.1 311.5 608.1 319.9C608.1 328.3 603.7 336.2 596.4 340.5L503.7 396.1L530 500.8C532 509 529.6 517.7 523.7 523.6C517.8 529.5 509 532 500.9 530L396.2 503.7L340.7 596.4C336.4 603.6 328.5 608.1 320.1 608.1C311.7 608.1 303.8 603.7 299.5 596.4L243.9 503.7L139.2 530C131 532 122.4 529.6 116.4 523.7C110.4 517.8 108 509 110 500.8L136.2 396.1L43.6 340.6C36.4 336.2 32 328.4 32 320C32 311.6 36.4 303.7 43.7 299.4L136.3 243.9L110 139.1C108 130.9 110.3 122.3 116.3 116.3C122.3 110.3 131 108 139.2 110L243.9 136.2L299.4 43.6L301.2 41C305.7 35.3 312.6 31.9 320 31.9zM320 176C240.5 176 176 240.5 176 320C176 399.5 240.5 464 320 464C399.5 464 464 399.5 464 320C464 240.5 399.5 176 320 176zM320 416C267 416 224 373 224 320C224 267 267 224 320 224C373 224 416 267 416 320C416 373 373 416 320 416z"/></svg></span>
+                    </div>
+                </div>
+
 
 
                 <hr class="nav-divider" style="margin-bottom: 6px;">
@@ -266,7 +273,7 @@
                         </div>
                     </div>
                 </div> -->
-          
+
 
             </div>
         </aside>
@@ -274,9 +281,8 @@
         <main class="chat-window">
             <header class="panel-header">
                 <div class="header-left chatHeaderLeft">
-                    <div class="avatar-frame avatar--sm" onclick="obj.profilePanel.toggleView(true)"> 
-                        <img src=""
-                            alt="User" class="avatar-img chat-window-img">
+                    <div class="avatar-frame avatar--sm" onclick="obj.profilePanel.toggleView(true)">
+                        <img src="" alt="User" class="avatar-img chat-window-img">
                     </div>
                     <div class="user-info">
                         <span class="chat-name chat-window-username">User 1</span>
@@ -422,7 +428,7 @@
                         class="xxk0z11 xvy4d1p"><svg height="24" width="24" preserveAspectRatio="xMidYMid meet" class=""
                             fill="none">
                             <title>ic-attach-file</title>
-                            <path fill="currentColor"
+                            <path
                                 d="M18 15.75c0 1.73-.6 3.2-1.82 4.43A6.03 6.03 0 0 1 11.75 22c-1.73 0-3.2-.6-4.42-1.82a6.03 6.03 0 0 1-1.83-4.43V6.5c0-1.25.44-2.31 1.31-3.19A4.34 4.34 0 0 1 10 2c1.25 0 2.31.44 3.19 1.31A4.34 4.34 0 0 1 14.5 6.5v8.75c0 .77-.27 1.42-.8 1.95s-1.18.8-1.95.8-1.42-.27-1.95-.8a2.65 2.65 0 0 1-.8-1.95V7a1 1 0 0 1 2 0v8.25a.73.73 0 0 0 .75.75.73.73 0 0 0 .75-.75V6.5c-.02-.7-.26-1.3-.74-1.78A2.37 2.37 0 0 0 10 4c-.7 0-1.3.24-1.78.72A2.41 2.41 0 0 0 7.5 6.5v9.25a4 4 0 0 0 1.22 3.01A4.14 4.14 0 0 0 11.75 20c1.17 0 2.16-.41 2.97-1.24A4.3 4.3 0 0 0 16 15.75V7a1 1 0 1 1 2 0v8.75Z">
                             </path>
                         </svg></span>
@@ -435,21 +441,31 @@
                             <title>wds-ic-sticker-smiley</title>
                             <path
                                 d="M8.49893 10.2521C9.32736 10.2521 9.99893 9.5805 9.99893 8.75208C9.99893 7.92365 9.32736 7.25208 8.49893 7.25208C7.6705 7.25208 6.99893 7.92365 6.99893 8.75208C6.99893 9.5805 7.6705 10.2521 8.49893 10.2521Z"
-                                fill="currentColor"></path>
+                                ></path>
                             <path
                                 d="M17.0011 8.75208C17.0011 9.5805 16.3295 10.2521 15.5011 10.2521C14.6726 10.2521 14.0011 9.5805 14.0011 8.75208C14.0011 7.92365 14.6726 7.25208 15.5011 7.25208C16.3295 7.25208 17.0011 7.92365 17.0011 8.75208Z"
-                                fill="currentColor"></path>
+                                ></path>
                             <path fill-rule="evenodd" clip-rule="evenodd"
                                 d="M16.8221 19.9799C15.5379 21.2537 13.8087 21.9781 12 22H9.27273C5.25611 22 2 18.7439 2 14.7273V9.27273C2 5.25611 5.25611 2 9.27273 2H14.7273C18.7439 2 22 5.25611 22 9.27273V11.8141C22 13.7532 21.2256 15.612 19.8489 16.9776L16.8221 19.9799ZM14.7273 4H9.27273C6.36068 4 4 6.36068 4 9.27273V14.7273C4 17.6393 6.36068 20 9.27273 20H11.3331C11.722 19.8971 12.0081 19.5417 12.0058 19.1204L11.9935 16.8564C11.9933 16.8201 11.9935 16.784 11.9941 16.7479C11.0454 16.7473 10.159 16.514 9.33502 16.0479C8.51002 15.5812 7.84752 14.9479 7.34752 14.1479C7.24752 13.9479 7.25585 13.7479 7.37252 13.5479C7.48919 13.3479 7.66419 13.2479 7.89752 13.2479L13.5939 13.2479C14.4494 12.481 15.5811 12.016 16.8216 12.0208L19.0806 12.0296C19.5817 12.0315 19.9889 11.6259 19.9889 11.1248V9.07648H19.9964C19.8932 6.25535 17.5736 4 14.7273 4ZM14.0057 19.1095C14.0066 19.2605 13.9959 19.4089 13.9744 19.5537C14.5044 19.3124 14.9926 18.9776 15.4136 18.5599L18.4405 15.5576C18.8989 15.1029 19.2653 14.5726 19.5274 13.996C19.3793 14.0187 19.2275 14.0301 19.0729 14.0295L16.8138 14.0208C15.252 14.0147 13.985 15.2837 13.9935 16.8455L14.0057 19.1095Z"
-                                fill="currentColor"></path>
+                                ></path>
                         </svg></span>
 
                 </div>
 
                 <input type="text" placeholder="Type a message" class="chat-input">
 
-                <div class="icon-wrapper" style="background-color: #1daa61; border-radius: 50%;"  onmouseover="this.style.backgroundColor='#1a9254';" onmouseout="this.style.backgroundColor='#1daa61';">
-                    <span onclick="obj.executeMessageSend()" data-testid="send" aria-hidden="true" data-icon="wds-ic-send-filled" class="xxk0z11 xvy4d1p"><svg viewBox="0 0 24 24" height="24" width="24" preserveAspectRatio="xMidYMid meet" class="send-btn" fill="" style="fill: white;"><title>send</title><path d="M5.4 19.425C5.06667 19.5583 4.75 19.5291 4.45 19.3375C4.15 19.1458 4 18.8666 4 18.5V14L12 12L4 9.99997V5.49997C4 5.1333 4.15 4.85414 4.45 4.66247C4.75 4.4708 5.06667 4.44164 5.4 4.57497L20.8 11.075C21.2167 11.2583 21.425 11.5666 21.425 12C21.425 12.4333 21.2167 12.7416 20.8 12.925L5.4 19.425Z" fill="#ffffff"></path></svg></span>
+                <div class="icon-wrapper" style="background-color: #1daa61; border-radius: 50%;"
+                    onmouseover="this.style.backgroundColor='#1a9254';"
+                    onmouseout="this.style.backgroundColor='#1daa61';">
+                    <span onclick="obj.executeMessageSend()" data-testid="send" aria-hidden="true"
+                        data-icon="wds-ic-send-filled" class="xxk0z11 xvy4d1p"><svg viewBox="0 0 24 24" height="24"
+                            width="24" preserveAspectRatio="xMidYMid meet" class="send-btn" fill=""
+                            style="fill: white;">
+                            <title>send</title>
+                            <path
+                                d="M5.4 19.425C5.06667 19.5583 4.75 19.5291 4.45 19.3375C4.15 19.1458 4 18.8666 4 18.5V14L12 12L4 9.99997V5.49997C4 5.1333 4.15 4.85414 4.45 4.66247C4.75 4.4708 5.06667 4.44164 5.4 4.57497L20.8 11.075C21.2167 11.2583 21.425 11.5666 21.425 12C21.425 12.4333 21.2167 12.7416 20.8 12.925L5.4 19.425Z"
+                                fill="#ffffff"></path>
+                        </svg></span>
                 </div>
             </footer>
         </main>

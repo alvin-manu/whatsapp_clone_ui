@@ -41,7 +41,7 @@ svg {
   justify-content: space-between;
   align-items: center;
   padding: 12px 0;
-  border-right: 1px solid #d1d7db;
+  border-right: 1px solid var(--border-primary);
 }
 
 .nav-item {
@@ -66,7 +66,7 @@ svg {
 
 .chatList {
   width: $sidebar-width;
-  border-right: 1px solid #d1d7db;
+  border-right: 1px solid var(--border-primary);
   height: 100vh;
   display: flex;
   flex-direction: column;
@@ -94,33 +94,47 @@ svg {
   display: flex;
   align-items: center;
   gap: 8px;
+
+  .icon-wrapper svg {
+    fill: var(--text-primary);
+  }
 }
 
 .brand-name {
-  color: $whatsapp-green;
+  color: var(--whatsapp-logo-green);
   font-size: 22px;
   font-weight: 700;
 }
 
 .search-wrapper {
-  background-color: var(--bg-secondary);
+  background-color: var(--search-bg);
   border-radius: 40px;
   display: flex;
   align-items: center;
-  padding: 0 12px;
+  padding: 20px 12px;
   height: 35px;
 
   .search-input {
     background: transparent;
+    color: var(--text-primary);
     border: none;
     padding: 8px;
     width: 100%;
-    font-size: 14px;
+    font-size: 16px;
     outline: none;
+
+    &::placeholder {
+     color: var(--text-secondary); 
+     opacity: 1;
+   }
   }
   .search-icon {
     color: #667781;
     font-size: 14px;
+  }
+  svg{
+    width: 20px;
+    height: 20px;
   }
 }
 
@@ -138,6 +152,7 @@ svg {
 }
 
 .chat-row-list {
+  background-color: var(--bg-primary);
   flex: 1;
   overflow-y: auto;
   overflow-x: hidden;
@@ -195,6 +210,7 @@ svg {
 
 .chatHeaderLeft .chat-name{
   margin-left:10px;
+  color: var(--text-primary);
 }
 
 .chat-footer-row {
@@ -232,9 +248,36 @@ svg {
   display: flex;
   flex-direction: column;
   height: 100vh;
-  background-image: url("https://i1-e.pinimg.com/1200x/e2/5a/01/e25a01a5535c801940e7d5d134049d93.jpg");
-  background-repeat: repeat;
-  background-size: 400px;
+  background-color: var(--chat-bg);
+  position: relative;
+  overflow: hidden;  
+  
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 0; 
+    pointer-events: none; 
+    background-color: var(--text-primary); 
+    opacity: 0.05;
+
+    -webkit-mask-image: url("https://static.whatsapp.net/rsrc.php/yx/r/voSdkk88H7C.svg");
+    mask-image: url("https://static.whatsapp.net/rsrc.php/yx/r/voSdkk88H7C.svg");
+    -webkit-mask-repeat: repeat;
+    mask-repeat: repeat;
+    -webkit-mask-size: 450px;
+    mask-size: 450px;
+  }
+
+  .panel-header, 
+  .message-feed, 
+  .chat-footer {
+    position: relative;
+    z-index: 1; 
+  }
 
   .icon-wrapper svg {
     fill: var(--text-primary);
@@ -267,14 +310,14 @@ svg {
   &--received {
     justify-content: flex-start;
     .msg-bubble {
-      background-color: var(--bg-primary);
+      background-color: var(--receive-bg);
       border-top-left-radius: 0;
     }
   }
   &--sent {
     justify-content: flex-end;
     .msg-bubble {
-      background-color: $whatsapp-light-green;
+      background-color: var(--sent-bg);
       border-top-right-radius: 0;
     }
   }
@@ -317,13 +360,17 @@ svg {
 .chat-footer {
   height: 62px;
   margin: 15px;
-  background-color: var(--bg-primary);
+  background-color: var(--receive-bg);
   box-shadow: 0 4px 6px -6px #222;
   border-radius: 40px;
   display: flex;
   align-items: center;
   padding: 0 14px;
   gap: 5px;
+
+  .icon-wrapper svg {
+    fill: var(--text-primary);
+  }
 }
 
 .chat-input {
