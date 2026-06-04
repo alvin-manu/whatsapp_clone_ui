@@ -165,15 +165,58 @@ svg {
   align-items: center;
   margin: 5px 8px;
   transition: background 0.1s ease;
+  position: relative;
 
   &.active,
   &:hover {
     background-color: var(--hover-secondary);
     border-radius: 12px;
+
+    .chat-action-trigger {
+      opacity: 1;
+      transform: translateX(0);
+    }
   }
 
   &.active .chat-body {
     border-bottom: none;
+  }
+
+  .chat-meta-column {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 4px;
+    margin-left: auto;
+    position: relative;
+    min-width: 40px;
+  }
+
+  .chat-action-trigger {
+    position: absolute;
+    bottom: -15px;
+    right: -4px;
+    opacity: 0;
+    transform: translateX(6px);
+    transition: opacity 0.2s cubic-bezier(0.4, 0, 0.2, 1), transform 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 4px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    svg {
+      fill: var(--text-secondary);
+    }
+
+    &:hover {      
+      svg {
+        fill: var(--text-primary);
+      }
+    }
   }
 }
 
@@ -184,7 +227,6 @@ svg {
   flex-direction: column;
   justify-content: center;
   min-width: 0;
-  border-bottom: 0.5px solid rgba(255, 255, 255, 0.05);
 }
 
 .chat-header-row {
@@ -469,7 +511,7 @@ svg {
   display: flex;
   flex-direction: column;
   height: 100vh;
-  background-color: var(--chat-bg);
+  background-color: var(--bg-secondary);
   position: relative;
   overflow: hidden;
 
@@ -636,6 +678,43 @@ svg {
 
     svg {
       fill: var(--text-primary);
+    }
+
+    &:hover {
+      background-color: var(--hover-primary);
+    }
+  }
+}
+
+.context-menu-panel {
+  position: absolute; 
+  z-index: 9999; 
+  width: 220px;
+  background-color: var(--bg-primary);
+  border: 1px solid var(--border-primary);
+  border-radius: 8px;
+  padding: 6px 0;
+  animation: contextMenuScaleIn 0.12s cubic-bezier(0, 0, 0.2, 1);
+
+  &__list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  &__item {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 10px 16px;
+    font-size: 14.5px;
+    color: var(--text-primary);
+    cursor: pointer;
+
+    svg {
+      width: 18px;
+      height: 18px;
+      fill: var(--text-secondary);
     }
 
     &:hover {
