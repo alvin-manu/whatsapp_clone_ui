@@ -317,6 +317,73 @@ class ProfileComponent {
     }
 }
 
+class MediaGalleryComponent {
+    constructor() {
+        this.panelContainer = document.querySelector("#mediaGalleryPanel");
+        this.mediaGrid = document.querySelector("#globalMediaGrid");
+        this.emptyMsg = document.querySelector("#emptyGalleryMsg");
+        this.closeBtn = document.querySelector("#closeGalleryBtn");
+
+        this.bindEvents();
+    }
+
+    openGallery(chatsPool) {
+        if (!this.panelContainer) return;
+
+        this.panelContainer.classList.remove("d-none");
+        this.renderGalleryGrid(chatsPool);
+    }
+
+    closeGallery() {
+        if (this.panelContainer) {
+            this.panelContainer.classList.add("d-none");
+        }
+    }
+
+    bindEvents() {
+        if (this.closeBtn) {
+            this.closeBtn.addEventListener("click", () => this.closeGallery());
+        }
+    }
+
+    renderGalleryGrid(chatsPool) {
+        this.mediaGrid.innerHTML = "";
+        const fragment = document.createDocumentFragment();
+        let imageCount = 0;
+
+        chatsPool.forEach(chat => {
+            chat.messages.forEach(msg => {
+
+                if (msg.messageType === "image") {
+                    imageCount++;
+
+                    const gridItem = document.createElement("div");
+                    gridItem.className = "media-grid-tile";
+
+                    gridItem.innerHTML = `
+                        <img src="${msg.text}" alt="Chat Attachment Image" class="media-grid-tile__img" loading="lazy">
+                        <div class="media-grid-tile__overlay">
+                            <span class="sender-tag">${chat.name}</span>
+                            <span class="time-tag">${msg.time}</span>
+                        </div>
+                    `;
+
+                    fragment.appendChild(gridItem);
+                }
+            });
+        });
+
+        if (imageCount === 0) {
+            this.emptyMsg.classList.remove("d-none");
+            this.mediaGrid.classList.add("d-none");
+        } else {
+            this.emptyMsg.classList.add("d-none");
+            this.mediaGrid.classList.remove("d-none");
+            this.mediaGrid.appendChild(fragment);
+        }
+    }
+}
+
 
 class WhatsAppApplication {
     constructor() {
@@ -333,6 +400,9 @@ class WhatsAppApplication {
 
         this.attachFileBtn = document.querySelector("#attachFileBtn");
         this.imageFileInput = document.querySelector("#imageFileInput");
+
+        this.mediaGallery = new MediaGalleryComponent();
+        this.mediaNavBtn = document.querySelector("#mediaNavBtn");
     }
 
     init() {
@@ -350,6 +420,12 @@ class WhatsAppApplication {
 
             this.imageFileInput.addEventListener("change", (e) => {
                 this.handleImageUpload(e);
+            });
+        }
+
+        if (this.mediaNavBtn) {
+            this.mediaNavBtn.addEventListener("click", () => {
+                this.mediaGallery.openGallery(this.chatsPool);
             });
         }
     }
