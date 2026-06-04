@@ -9,10 +9,11 @@ const PRELOADED_REPLIES = [
 
 
 class Message {
-    constructor(text, type) {
+    constructor(text, type, messageType) {
         this.id = Date.now() + Math.random();
         this.text = text;
         this.type = type;
+        this.messageType = messageType;
         const now = new Date();
         this.time = now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', hour12: true }).toLowerCase();
         this.timestamp = now.getTime();
@@ -27,7 +28,7 @@ class SidebarComponent {
         this.currentSearchQuery = "";
 
         this.openMenuChatId = null;
-        this.activeFilter = false; 
+        this.activeFilter = false;
 
         this.favPillBtn = document.querySelector("#favPillBtn");
         this.allPillBtn = document.querySelector("#allPillBtn");
@@ -42,9 +43,9 @@ class SidebarComponent {
             obj.renderAll();
         });
     }
-    
-   changeFavourites(filterFavourites) {
-        this.activeFilter = filterFavourites; 
+
+    changeFavourites(filterFavourites) {
+        this.activeFilter = filterFavourites;
         obj.renderAll();
     }
 
@@ -52,7 +53,7 @@ class SidebarComponent {
         if (this.favPillBtn) {
             this.favPillBtn.addEventListener("click", () => {
                 this.changeFavourites(true);
-                
+
                 this.favPillBtn.classList.add("active")
                 this.allPillBtn.classList.remove("active")
             });
@@ -70,12 +71,12 @@ class SidebarComponent {
 
         this.chatListContainer.innerHTML = ""
 
-        const filteredChats = chatData.filter(chat =>{
+        const filteredChats = chatData.filter(chat => {
             const matchesSearch = chat.name.toLowerCase().includes(this.currentSearchQuery);
 
             const matchesPill = this.activeFilter ? chat.isFavourite === true : true;
             return matchesSearch && matchesPill;
-    });
+        });
 
         filteredChats.sort((chatA, chatB) => {
             const lastMsgA = chatA.messages[chatA.messages.length - 1];
@@ -250,9 +251,17 @@ class ChatWindowComponent {
         contact.messages.forEach(item => {
             const msgRow = document.createElement("div")
             msgRow.className = `${item.type === "received" ? "msg-row msg-row--received" : "msg-row msg-row--sent"}`
+
+            let messageContentHtml = "";
+            if (item.messageType === "image") {
+                messageContentHtml = `<img src="${item.text}" alt="Sent Image" class="msg-bubble__attached-image">`;
+            } else {
+                messageContentHtml = `<p class="msg-text">${item.text}</p>`;
+            }
+
             msgRow.innerHTML = `
             <div class="msg-bubble">
-                        <p class="msg-text">${item.text}</p>
+                        ${messageContentHtml}
                         <div class="msg-meta">
                             <span class="msg-time">${item.time}</span>
                             ${item.type === "sent" ? `
@@ -322,11 +331,43 @@ class WhatsAppApplication {
 
         this.contextMenu = new ContextMenuComponent(this.handleToggleFavourite.bind(this));
 
+        this.attachFileBtn = document.querySelector("#attachFileBtn");
+        this.imageFileInput = document.querySelector("#imageFileInput");
     }
 
     init() {
         this.loadData()
         this.renderAll()
+        this.bindEvents();
+    }
+
+    bindEvents() {
+
+        if (this.attachFileBtn && this.imageFileInput) {
+            this.attachFileBtn.addEventListener("click", () => {
+                this.imageFileInput.click();
+            });
+
+            this.imageFileInput.addEventListener("change", (e) => {
+                this.handleImageUpload(e);
+            });
+        }
+    }
+
+    handleImageUpload(event) {
+        const file = event.target.files[0];
+        if (!file) return;
+
+        const reader = new FileReader();
+
+        reader.onload = (e) => {
+            const base64ImageStr = e.target.result;
+            this.executeMessageSend(base64ImageStr, "image");
+
+            this.imageFileInput.value = "";
+        };
+
+        reader.readAsDataURL(file);
     }
 
     toggleTheme() {
@@ -426,13 +467,15 @@ class WhatsAppApplication {
 
     }
 
-    executeMessageSend() {
-        const message = this.chatWindow.getInputValue()
-        if (message === "") return;
+    executeMessageSend(content = null, messageType = "text") {
+
+        let finalContent = content ? content : this.chatWindow.getInputValue();
+        if (!finalContent) return;
 
         const activeChat = this.chatsPool.find(c => c.id === this.activeChatId);
+        if (!activeChat) return;
 
-        const newMsg = new Message(message, "sent");
+        const newMsg = new Message(finalContent, "sent", messageType);
         activeChat.messages.push(newMsg);
         this.saveToStorage();
 
